@@ -1,0 +1,22 @@
+{% extends './base.html' %}
+
+
+{% block content %}
+<div class='container'>
+
+  {% include './views/newpost.html' %}
+
+  {% for post in posts %}
+  <div class='box'>
+    <p>{{post.title}}</p>
+    <p>{{post.body}}</p>
+    <small>{{post.author}}</small>
+
+    <form action={{url_for('delete_entry', id=post.id)}} method="POST">
+      <button type='submit'>DELETE USING FORM</button>
+    </form>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
